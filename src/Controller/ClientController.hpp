@@ -22,6 +22,16 @@ public:
 
 	~ClientController() {}
 
+	ENDPOINT_INFO(GetAllClients)
+	{
+		info->summary = "Get all clients";
+		info->description = "Returns all clients from the server";
+		info->addResponse<oatpp::Object<ResponseClients>>(
+			Status::CODE_200,
+			"application/json",
+			"The JSON object with status and array of clients");
+		info->addResponse(Status::CODE_500, "The JSON object with a server error status");
+	}
 	ENDPOINT("GET", "/api/clients", GetAllClients)
 	{
 		try
@@ -36,6 +46,21 @@ public:
 		}
 	}
 
+	ENDPOINT_INFO(GetClientById)
+	{
+		info->summary = "Get a client by requested id";
+		info->description = "Returns client with requested id";
+		info->addResponse<oatpp::Object<ResponseClient>>(
+			Status::CODE_200,
+			"application/json",
+			"The JSON object with status and client DTO");
+		info->addResponse(Status::CODE_400, "The JSON object with a client error status");
+		info->addResponse(Status::CODE_500, "The JSON object with a server error status");
+
+		info->pathParams["clientId"].allowEmptyValue = false;
+		info->pathParams["clientId"].description = "Client ID";
+		info->pathParams["clientId"].required = true;
+	}
 	ENDPOINT("GET", "/api/clients/{clientId}", GetClientById,
 			 PATH(UInt64, client_id, "clientId"))
 	{
@@ -55,6 +80,15 @@ public:
 		}
 	}
 
+	ENDPOINT_INFO(CreateClient)
+	{
+		info->summary = "Create a new client";
+		info->description = "Creates new client based on passed JSON representation";
+		info->addConsumes<oatpp::Object<Client>>("application/json", "New client that needs to be added");
+		info->addResponse(Status::CODE_200, "The JSON object with success status");
+		info->addResponse(Status::CODE_400, "The JSON object with a client error status");
+		info->addResponse(Status::CODE_500, "The JSON object with a server error status");
+	}
 	ENDPOINT("POST", "/api/clients", CreateClient,
 			 REQUEST(std::shared_ptr<IncomingRequest>, request))
 	{
@@ -80,6 +114,15 @@ public:
 		}
 	}
 
+	ENDPOINT_INFO(UpdateClient)
+	{
+		info->summary = "Update a client";
+		info->description = "Updates client based on passed JSON representation";
+		info->addConsumes<oatpp::Object<Client>>("application/json", "Client that needs to be updated");
+		info->addResponse(Status::CODE_200, "The JSON object with success status");
+		info->addResponse(Status::CODE_400, "The JSON object with a client error status");
+		info->addResponse(Status::CODE_500, "The JSON object with a server error status");
+	}
 	ENDPOINT("PUT", "/api/clients", UpdateClient,
 			 REQUEST(std::shared_ptr<IncomingRequest>, request))
 	{
@@ -104,6 +147,18 @@ public:
 		}
 	}
 
+	ENDPOINT_INFO(DeleteClientById)
+	{
+		info->summary = "Delete a client";
+		info->description = "Deletes a client based on passed ID";
+		info->addResponse(Status::CODE_200, "The JSON object with status and client DTO");
+		info->addResponse(Status::CODE_400, "The JSON object with a client error status");
+		info->addResponse(Status::CODE_500, "The JSON object with a server error status");
+
+		info->pathParams["clientId"].allowEmptyValue = false;
+		info->pathParams["clientId"].description = "Client ID";
+		info->pathParams["clientId"].required = true;
+	}
 	ENDPOINT("DELETE", "/api/clients/{clientId}", DeleteClientById,
 			 PATH(UInt64, client_id, "clientId"))
 	{
