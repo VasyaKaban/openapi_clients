@@ -48,4 +48,16 @@ add_executable(${PROJECT_NAME} src/App.cpp)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE openapi_app_lib)
 
+add_executable(
+	openapi_app_test
+	    test/App/ClientApiTestClient.hpp
+		test/App/TestComponent.hpp
+		test/ClientControllerTest.h
+		test/ClientControllerTest.cpp
+		test/Tests.cpp)
+
+target_link_libraries(openapi_app_test PRIVATE openapi_app_lib)
+
+enable_testing()
+add_test(test, openapi_app_test)
 
