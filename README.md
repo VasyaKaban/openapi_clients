@@ -16,7 +16,7 @@
 - Oat++-Swagger
 
 ## Dependencies resolving
-You can use deps.sh script for dependencies installation and compilation. You can also pass first argument with amouns of jobs that will participate in "make" building
+You can use deps.sh script for dependencies installation and compilation. You can also pass first argument with amount of jobs that will participate in "make" building
 
 ## Execution:
   Just execute compiled binary and use.
