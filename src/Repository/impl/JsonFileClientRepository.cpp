@@ -135,7 +135,7 @@ void JsonFileClientRepository::UpdateClient(oatpp::Object<Client> client)
 	CheckClient(client, true);
 	auto it = clients.find(*client->id.get());
 	if(it == clients.end())
-		return;
+		throw ClientDataException("Client not found!");
 
 	it->second = client;
 }
