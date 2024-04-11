@@ -24,8 +24,9 @@ void ClientControllerTest::onRun()
 	catch(const std::exception &ex)
 	{
 		OATPP_LOGD("ServerRun",
-				   "Deserialization from %s failed!",
-				   repository->GetFilePath().c_str());
+				   "Deserialization from %s failed!\n Error: %s",
+				   repository->GetFilePath().c_str(),
+				   ex.what());
 	}
 
 	runner.addController(std::make_shared<ClientController>(std::move(repository)));

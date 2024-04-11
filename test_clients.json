@@ -1,0 +1,44 @@
+[
+	{
+		"id": 0,
+		"name": "TEST_CLIENT_0",
+		"phone_number": 123,
+		"address": "TEST_CLIENT_ADDRESS_0"
+	},
+	{
+		"id": 1,
+		"name": "TEST_CLIENT_1",
+		"phone_number": 45556,
+		"address": "TEST_CLIENT_ADDRESS_1"
+	},
+	{
+		"id": 2,
+		"name": "TEST_CLIENT_2",
+		"phone_number": 3464557,
+		"address": "TEST_CLIENT_ADDRESS_2"
+	},
+	{
+		"id": 3465,
+		"name": "TEST_CLIENT_3465",
+		"phone_number": 1233465,
+		"address": "TEST_CLIENT_ADDRESS_3465"
+	},
+	{
+		"id": 5685,
+		"name": "TEST_CLIENT_5685",
+		"phone_number": 56855685,
+		"address": "TEST_CLIENT_ADDRESS_5685"
+	},
+	{
+		"id": 5689,
+		"name": "TEST_CLIENT_5689",
+		"phone_number": 34556,
+		"address": "TEST_CLIENT_ADDRESS_5689"
+	},
+	{
+		"id": 10000,
+		"name": "TEST_CLIENT_10000",
+		"phone_number": 12310000,
+		"address": "TEST_CLIENT_ADDRESS_10000"
+	}
+]
